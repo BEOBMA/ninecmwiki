@@ -1,6 +1,416 @@
-<script setup>
+<template>
+  <!DOCTYPE html>
+  <html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구츠위키:대문</title>
+  </head>
+  <body>
+
+  <div class="top-right-controls">
+    <div id="recent-container"></div>
+  </div>
+
+  <main>
+    <div class="container">
+      <h1>🌿 구츠위키:대문</h1>
+      <p>여기는 누구나 자유롭게 문서를 작성하고 열람할 수 있는 위키입니다.</p>
+      <div class="main-grid">
+        <div class="content">
+          <article class="article-container">
+            <div class="article-header">
+              <h1 class="article-title">구츠위키:대문</h1>
+            </div>
+
+            <div class="article-content">
+              <section id="intro" class="section">
+                <h2 class="section-title">여러분이 가꾸어 나가는 구츠의 나무</h2>
+                <div class="article-text-container">
+                  <p class="article-text">
+                    구츠위키에 오신 것을 환영합니다!
+                  </p>
+                  <p class="article-text">
+                    구츠위키는 누구나 기여할 수 있는 위키입니다.
+                    검증되지 않았거나 편향된 내용이 있을 수 있습니다.
+                  </p>
+                </div>
+              </section>
+            </div>
+
+            <div class="article-footer">
+              <p>최근 수정 시각: 2025-04-06 10:55:33</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  </body>
+  </html>
+</template>
+
+<script>
+
 </script>
 
-<template>
+<style>
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-</template>
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  min-height: 100vh;
+  background: #f8f9fa;
+  color: #333;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: #3366cc;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 오른쪽 상단 고정 */
+.top-right-controls {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+#search {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.buttons button {
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: #1f5180;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.buttons button:hover {
+  background-color: #17406a;
+}
+
+/* Main content styles */
+main {
+  padding: 1.5rem 0;
+  width: 100%;
+}
+
+main .container h1 {
+  font-size: 2.5rem;
+  color: #3366cc;
+  margin-bottom: 1rem;
+  border-bottom: none;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+main .container>p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  color: #555;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+}
+
+.main-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Article styles */
+.content {
+  width: 100%;
+}
+
+.article-container {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+}
+
+.article-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 1.5rem;
+}
+
+.article-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.article-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.action-button {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  background-color: white;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #f8f9fa;
+}
+
+.toc {
+  background-color: #f6f8fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.toc-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.toc-list {
+  padding-left: 1.25rem;
+}
+
+.toc-sublist {
+  padding-left: 1.25rem;
+}
+
+.article-content {
+  margin-bottom: 1rem;
+}
+
+.section {
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.subsection-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.article-text {
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.article-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .article-flex {
+    flex-direction: row;
+  }
+
+  .article-text-container {
+    width: 66.666667%;
+  }
+
+  .article-image-container {
+    width: 33.333333%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.image-container {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.article-image {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.image-caption {
+  background-color: #f6f8fa;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+.reference-list {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  font-size: 0.875rem;
+}
+
+.reference-item {
+  margin-bottom: 0.25rem;
+}
+
+.article-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.75rem;
+  color: #718096;
+}
+
+/* Recent changes styles */
+.recent-changes {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.recent-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.recent-list {
+  list-style-type: none;
+}
+
+.recent-item {
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.recent-item:last-child {
+  border-bottom: none;
+}
+
+.recent-time {
+  margin-left: 0.5rem;
+  font-size: 0.75rem;
+  color: #718096;
+}
+
+/* Original styles from user's CSS */
+#content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+h1,
+h2,
+h3 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 4px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#edit-button,
+#delete-button,
+#list-button {
+  display: inline-block;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  padding: 8px 16px;
+  font-size: 15px;
+  background-color: #1f5180;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#delete-button {
+  background-color: #a02020;
+}
+
+#edit-button:hover {
+  background-color: #17406a;
+}
+
+#delete-button:hover {
+  background-color: #801010;
+}
+
+#doc-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+#preview img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .top-right-controls {
+    position: static;
+    margin: 20px auto;
+    width: 90%;
+    flex-direction: column;
+  }
+
+  #search {
+    width: 100%;
+  }
+
+  .buttons {
+    width: 100%;
+  }
+
+  .buttons button {
+    flex: 1;
+  }
+}
+</style>
